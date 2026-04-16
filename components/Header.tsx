@@ -1,7 +1,26 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import { projects } from "@/data/projects";
 
 export default function Header() {
+  const [projectsOpen, setProjectsOpen] = useState(false);
+  const projectsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!projectsOpen) return;
+
+    function handlePointerDown(event: PointerEvent) {
+      if (!projectsRef.current?.contains(event.target as Node)) {
+        setProjectsOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [projectsOpen]);
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-white">
       <div
@@ -13,17 +32,30 @@ export default function Header() {
         </Link>
         <nav className="type-nav flex items-center gap-5 sm:gap-8">
           <Link href="/all-photos">All Photos</Link>
-          <div className="group relative">
-            <button type="button" className="cursor-default">
+          <div ref={projectsRef} className="relative">
+            <button
+              type="button"
+              className="cursor-pointer"
+              aria-expanded={projectsOpen}
+              aria-haspopup="true"
+              onClick={() => setProjectsOpen((open) => !open)}
+            >
               Projects
             </button>
-            <div className="invisible absolute right-0 top-full z-20 min-w-40 pt-3 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+            <div
+              className={`absolute right-0 top-full z-20 min-w-40 pt-3 transition-opacity ${
+                projectsOpen
+                  ? "visible opacity-100"
+                  : "invisible pointer-events-none opacity-0"
+              }`}
+            >
               <div className="type-nav space-y-1 bg-white p-3 text-left">
                 {projects.map((project) => (
                   <Link
                     key={project.slug}
                     href={`/projects/${project.slug}`}
                     className="block whitespace-nowrap py-1"
+                    onClick={() => setProjectsOpen(false)}
                   >
                     {project.label}
                   </Link>
