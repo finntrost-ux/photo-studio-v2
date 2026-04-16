@@ -6,7 +6,7 @@ export default function Home() {
   const featuredPhotos = allPhotos.slice(0, 5);
 
   return (
-    <section className="space-y-16 pt-2 sm:space-y-20">
+    <section className="-mt-9 space-y-16 pt-0 sm:-mt-11 sm:space-y-20">
       {featuredPhotos.map((photo, index) => (
         <Link
           key={photo.id}
