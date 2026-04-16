@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #101010;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-roboto);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-roboto), Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  text-rendering: geometricPrecision;
+  margin: 0;
+}
+
+.type-brand {
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  line-height: 1.1;
+}
+
+.type-nav {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+}
+
+.type-title {
+  font-size: clamp(1.5rem, 2vw, 2.05rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+}
+
+.type-body {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.type-meta {
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a,
+img {
+  transition-property: color, opacity, transform, filter;
+  transition-timing-function: ease;
+}
+
+html {
+  background: #ffffff;
+  scroll-behavior: smooth;
+}
