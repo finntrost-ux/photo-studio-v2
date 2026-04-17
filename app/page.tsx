@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { allPhotos } from "@/data/projects";
+import { homeFeaturedPhotos } from "@/data/projects";
 import Link from "next/link";
 
 export default function Home() {
-  const featuredPhotos = allPhotos.slice(0, 5);
+  const featuredPhotos = homeFeaturedPhotos;
 
   return (
     <section className="-mt-9 space-y-16 pt-0 sm:-mt-11 sm:space-y-20">

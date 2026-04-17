@@ -26,15 +26,20 @@ export default function AboutPage() {
           of my lens. Every roll is a small experiment and a personal snapshot
           of how I see the day.
         </p>
-        <div className="type-nav space-y-2 text-neutral-900">
-          <a
-            href="https://www.instagram.com/comfort_finn/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Instagram
-          </a>
-          <p>finn.trost@gmail.com</p>
+        <div className="space-y-3 text-neutral-900">
+          <h2 className="text-sm font-light tracking-[0.08em] text-neutral-900">
+            Contact
+          </h2>
+          <div className="type-nav flex flex-col gap-2">
+            <a
+              href="https://www.instagram.com/comfort_finn/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Instagram
+            </a>
+            <a href="mailto:finn.trost@gmail.com">finn.trost@gmail.com</a>
+          </div>
         </div>
       </div>
     </section>

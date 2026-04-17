@@ -12,7 +12,11 @@ export default function PhotoGrid({ photos, hrefBuilder }: PhotoGridProps) {
     <section className="grid grid-cols-1 gap-x-12 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
       {photos.map((photo, index) => (
         <Link key={photo.id} href={hrefBuilder(index)} className="block">
-          <article className="relative aspect-[3/2] w-full">
+          <article
+            className={`relative w-full ${
+              photo.orientation === "portrait" ? "aspect-[2/3]" : "aspect-[3/2]"
+            }`}
+          >
             <Image
               src={photo.src}
               alt={photo.alt}

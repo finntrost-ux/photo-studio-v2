@@ -1,4 +1,4 @@
-export type ProjectName = "japan" | "berlin" | "copenhagen";
+export type ProjectName = "home" | "japan" | "italy" | "denmark";
 
 export type PhotoItem = {
   id: string;
@@ -8,83 +8,163 @@ export type PhotoItem = {
   orientation: "landscape" | "portrait";
 };
 
-export const allPhotos: PhotoItem[] = [
+/** Curated strip on `/` — not listed under Films */
+export const homeFeaturedPhotos: PhotoItem[] = [
   {
-    id: "japan-1",
-    src: "/uploads/01.png",
-    alt: "Coastline with portrait silhouette",
-    project: "japan",
+    id: "home-1",
+    src: "/uploads/home/01.png",
+    alt: "Vintage turquoise Fiat 500 in a narrow cobblestone alley",
+    project: "home",
     orientation: "landscape",
   },
   {
-    id: "japan-2",
-    src: "/uploads/02.png",
-    alt: "Bird above dark rocks",
-    project: "japan",
+    id: "home-2",
+    src: "/uploads/home/02.png",
+    alt: "Espresso and pastries on a sunlit outdoor table",
+    project: "home",
     orientation: "landscape",
   },
   {
-    id: "japan-3",
-    src: "/uploads/03.png",
-    alt: "Small boat near rocky shore",
-    project: "japan",
+    id: "home-3",
+    src: "/uploads/home/03.png",
+    alt: "Pantheon portico and inscription against a clear sky",
+    project: "home",
     orientation: "landscape",
   },
   {
-    id: "berlin-1",
-    src: "/uploads/04.png",
-    alt: "Coffee and pastries on wooden table",
-    project: "berlin",
-    orientation: "landscape",
-  },
-  {
-    id: "berlin-2",
-    src: "/uploads/05.png",
-    alt: "Harbor street and yellow building",
-    project: "berlin",
-    orientation: "landscape",
-  },
-  {
-    id: "berlin-3",
-    src: "/uploads/06.png",
-    alt: "Workshop interior",
-    project: "berlin",
-    orientation: "landscape",
-  },
-  {
-    id: "copenhagen-1",
-    src: "/uploads/07.png",
-    alt: "Autumn alley in old quarter",
-    project: "copenhagen",
-    orientation: "portrait",
-  },
-  {
-    id: "copenhagen-2",
-    src: "/uploads/08.png",
-    alt: "Stone pier and open water",
-    project: "copenhagen",
-    orientation: "landscape",
-  },
-  {
-    id: "copenhagen-3",
-    src: "/uploads/09.png",
-    alt: "Warm fire in a room",
-    project: "copenhagen",
-    orientation: "portrait",
-  },
-  {
-    id: "copenhagen-4",
-    src: "/uploads/10.png",
-    alt: "Blue ocean and rocky coast",
-    project: "copenhagen",
+    id: "home-4",
+    src: "/uploads/home/04.png",
+    alt: "Pedestrians on a zebra crossing seen from above",
+    project: "home",
     orientation: "landscape",
   },
 ];
 
+const JAPAN_COUNT = 25;
+const ITALY_COUNT = 26;
+const DENMARK_COUNT = 12;
+
+/** Matches on-disk order: three 3:2 first, then alternating 2:3 / 3:2 (see `scripts/reorder-gallery-mix.py`). */
+const japanOrientations = [
+  "landscape",
+  "landscape",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "portrait",
+  "portrait",
+  "portrait",
+  "portrait",
+  "portrait",
+  "portrait",
+  "portrait",
+  "portrait",
+  "portrait",
+  "portrait",
+  "portrait",
+] as const;
+
+const italyOrientations = [
+  "landscape",
+  "landscape",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "portrait",
+  "portrait",
+  "portrait",
+  "portrait",
+] as const;
+
+const denmarkOrientations = [
+  "landscape",
+  "landscape",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "portrait",
+  "landscape",
+  "landscape",
+  "landscape",
+  "landscape",
+] as const;
+
+const japanPhotos: PhotoItem[] = Array.from({ length: JAPAN_COUNT }, (_, index) => {
+  const n = index + 1;
+  const file = `${String(n).padStart(2, "0")}.png`;
+  return {
+    id: `japan-${n}`,
+    src: `/uploads/japan/${file}`,
+    alt: `Japan #${n}`,
+    project: "japan",
+    orientation: japanOrientations[index],
+  };
+});
+
+const italyPhotos: PhotoItem[] = Array.from({ length: ITALY_COUNT }, (_, index) => {
+  const n = index + 1;
+  const file = `${String(n).padStart(2, "0")}.png`;
+  return {
+    id: `italy-${n}`,
+    src: `/uploads/italy/${file}`,
+    alt: `Italy #${n}`,
+    project: "italy",
+    orientation: italyOrientations[index],
+  };
+});
+
+const denmarkPhotos: PhotoItem[] = Array.from({ length: DENMARK_COUNT }, (_, index) => {
+  const n = index + 1;
+  const file = `${String(n).padStart(2, "0")}.png`;
+  return {
+    id: `denmark-${n}`,
+    src: `/uploads/denmark/${file}`,
+    alt: `Denmark #${n}`,
+    project: "denmark",
+    orientation: denmarkOrientations[index],
+  };
+});
+
+export const allPhotos: PhotoItem[] = [
+  ...homeFeaturedPhotos,
+  ...japanPhotos,
+  ...italyPhotos,
+  ...denmarkPhotos,
+];
+
+/** Order defines dropdown numbering: #1, #2, #3 */
 export const projects = [
   { slug: "japan", label: "Japan" },
-  { slug: "berlin", label: "Berlin" },
-  { slug: "copenhagen", label: "Copenhagen" },
+  { slug: "italy", label: "Italy" },
+  { slug: "denmark", label: "Denmark" },
 ] as const;
 
 export const photosByProject = (project: ProjectName) =>
