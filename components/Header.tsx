@@ -31,7 +31,6 @@ export default function Header() {
           Finn Trost
         </Link>
         <nav className="type-nav flex items-center gap-5 sm:gap-8">
-          <Link href="/all-photos">All Photos</Link>
           <div ref={projectsRef} className="relative">
             <button
               type="button"
@@ -63,6 +62,7 @@ export default function Header() {
               </div>
             </div>
           </div>
+          <Link href="/all-photos">All Photos</Link>
           <Link href="/about">About</Link>
         </nav>
       </div>
