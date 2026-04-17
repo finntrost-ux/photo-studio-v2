@@ -3,12 +3,12 @@ import Image from "next/image";
 export default function AboutPage() {
   return (
     <section className="mx-auto grid max-w-6xl grid-cols-1 gap-12 pt-2 lg:grid-cols-[1fr_1fr] lg:gap-16">
-      <div className="relative aspect-[2/3] w-full">
+      <div className="relative w-full max-w-[667px] aspect-[667/1000]">
         <Image
           src="/uploads/about.png"
           alt="Finn Trost portrait"
           fill
-          sizes="(max-width: 1024px) 100vw, 45vw"
+          sizes="(max-width: 1024px) 100vw, 667px"
           className="object-cover"
         />
       </div>
