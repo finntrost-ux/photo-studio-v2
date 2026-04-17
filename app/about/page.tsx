@@ -5,7 +5,7 @@ export default function AboutPage() {
     <section className="mx-auto grid max-w-6xl grid-cols-1 gap-12 pt-2 lg:grid-cols-[1fr_1fr] lg:gap-16">
       <div className="relative aspect-[2/3] w-full">
         <Image
-          src="/uploads/07.png"
+          src="/uploads/about.png"
           alt="Finn Trost portrait"
           fill
           sizes="(max-width: 1024px) 100vw, 45vw"
@@ -27,10 +27,14 @@ export default function AboutPage() {
           of how I see the day.
         </p>
         <div className="type-nav space-y-2 text-neutral-900">
-          <a href="https://instagram.com/finn.trost" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.instagram.com/comfort_finn/"
+            target="_blank"
+            rel="noreferrer"
+          >
             Instagram
           </a>
-          <p>finn@comfortstudio.photo</p>
+          <p>finn.trost@gmail.com</p>
         </div>
       </div>
     </section>

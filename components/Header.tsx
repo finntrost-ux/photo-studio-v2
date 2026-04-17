@@ -40,7 +40,7 @@ export default function Header() {
               aria-haspopup="true"
               onClick={() => setProjectsOpen((open) => !open)}
             >
-              Projects
+              Films
             </button>
             <div
               className={`absolute right-0 top-full z-20 min-w-40 pt-3 transition-opacity ${
@@ -50,14 +50,14 @@ export default function Header() {
               }`}
             >
               <div className="type-nav space-y-1 bg-white p-3 text-left">
-                {projects.map((project) => (
+                {projects.map((project, index) => (
                   <Link
                     key={project.slug}
                     href={`/projects/${project.slug}`}
                     className="block whitespace-nowrap py-1"
                     onClick={() => setProjectsOpen(false)}
                   >
-                    {project.label}
+                    #{index + 1} {project.label}
                   </Link>
                 ))}
               </div>
